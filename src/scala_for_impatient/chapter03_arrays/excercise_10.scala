@@ -4,7 +4,7 @@ import java.awt.datatransfer._
 object excercise_10 extends App {
   val flavors = SystemFlavorMap.getDefaultFlavorMap().asInstanceOf[SystemFlavorMap]
 
-  flavors.getNativesForFlavor(DataFlavor.imageFlavor).toArrayBuffer
+  flavors.getNativesForFlavor(DataFlavor.imageFlavor)
 
   println("pass")
 }
