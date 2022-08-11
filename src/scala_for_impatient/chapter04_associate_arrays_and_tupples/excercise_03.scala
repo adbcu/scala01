@@ -16,12 +16,4 @@ object excercise_03 extends App {
 //    (word, _ + 1 )
   }
 
-
-
-//  var wordsCount = new scala.collection.immutable.HashMap[String, Int]
-
-//  for (word <- words.distinct) wordsCount = wordsCount + (word -> words.count(_ == word))
-//  for ((k, v) <- wordsCount) printf("Word %s contains %d times\n", k, v)
-
-
 }
