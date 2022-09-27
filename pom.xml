@@ -4,7 +4,14 @@
 
     <groupId>org.my.comp</groupId>
     <artifactId>my-project</artifactId>
+    <packaging>pom</packaging>
     <version>1.0</version>
+    <modules>
+        <module>submodule01</module>
+        <module>scala_for_impatient</module>
+        <module>stepik01</module>
+        <module>stepik01</module>
+    </modules>
 
     <properties>
         <myproperty>myProperty_value</myproperty>
@@ -12,6 +19,7 @@
         <my_version>1</my_version>
         <my_version2>{my_version}</my_version2>
     </properties>
+
 
     <dependencies>
         <!-- Зависимости, maven сам все скачал-->
@@ -21,6 +29,41 @@
             <version>3.12.0</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <defaultGoal>install</defaultGoal>
+
+        <plugins>
+            <!-- disable surefire -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            <!-- enable scalatest -->
+            <plugin>
+                <groupId>org.scalatest</groupId>
+                <artifactId>scalatest-maven-plugin</artifactId>
+                <version>2.1.0</version>
+                <configuration>
+                    <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+                    <junitxml>.</junitxml>
+                    <filereports>WDF TestSuite.txt</filereports>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>test</id>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 
 </project>
