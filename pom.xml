@@ -7,9 +7,8 @@
     <packaging>pom</packaging>
     <version>1.0</version>
     <modules>
-        <module>submodule01</module>
+        <module>scala01</module>
         <module>scala_for_impatient</module>
-        <module>stepik01</module>
         <module>stepik01</module>
     </modules>
 

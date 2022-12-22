@@ -1,4 +1,4 @@
-package main.scala.org.my.comp.chapter05_classes
+package scala.org.my.comp.chapter05_classes
 
 object excercise_02 extends App {
   class BankAccount() {
