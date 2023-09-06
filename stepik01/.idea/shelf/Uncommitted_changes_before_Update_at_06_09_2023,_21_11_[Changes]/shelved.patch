@@ -1,0 +1,179 @@
+Index: ../pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n\n    <groupId>org.my.comp</groupId>\n    <artifactId>my-project</artifactId>\n    <packaging>pom</packaging>\n    <version>1.0</version>\n    <modules>\n        <module>submodule01</module>\n        <module>scala_for_impatient</module>\n        <module>stepik01</module>\n        <module>stepik01</module>\n    </modules>\n\n    <properties>\n        <myproperty>myProperty_value</myproperty>\n        <my.property2>myProperty2_value</my.property2>\n        <my_version>1</my_version>\n        <my_version2>{my_version}</my_version2>\n    </properties>\n\n\n    <dependencies>\n        <!-- Зависимости, maven сам все скачал-->\n        <dependency>\n            <groupId>org.apache.commons</groupId>\n            <artifactId>commons-lang3</artifactId>\n            <version>3.12.0</version>\n        </dependency>\n    </dependencies>\n\n    <build>\n        <defaultGoal>install</defaultGoal>\n\n        <plugins>\n            <!-- disable surefire -->\n            <plugin>\n                <groupId>org.apache.maven.plugins</groupId>\n                <artifactId>maven-surefire-plugin</artifactId>\n                <version>2.7</version>\n                <configuration>\n                    <skipTests>true</skipTests>\n                </configuration>\n            </plugin>\n            <!-- enable scalatest -->\n            <plugin>\n                <groupId>org.scalatest</groupId>\n                <artifactId>scalatest-maven-plugin</artifactId>\n                <version>2.1.0</version>\n                <configuration>\n                    <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>\n                    <junitxml>.</junitxml>\n                    <filereports>WDF TestSuite.txt</filereports>\n                </configuration>\n                <executions>\n                    <execution>\n                        <id>test</id>\n                        <goals>\n                            <goal>test</goal>\n                        </goals>\n                    </execution>\n                </executions>\n            </plugin>\n        </plugins>\n    </build>\n\n\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/../pom.xml b/../pom.xml
+--- a/../pom.xml	
++++ b/../pom.xml	
+@@ -8,9 +8,8 @@
+     <version>1.0</version>
+     <modules>
+         <module>submodule01</module>
+-        <module>scala_for_impatient</module>
+-        <module>stepik01</module>
+-        <module>stepik01</module>
++        <!-- <module>scala_for_impatient</module> -->
++        <!-- <module>stepik01</module> -->
+     </modules>
+ 
+     <properties>
+@@ -44,7 +43,7 @@
+                 </configuration>
+             </plugin>
+             <!-- enable scalatest -->
+-            <plugin>
++            <!-- <plugin>
+                 <groupId>org.scalatest</groupId>
+                 <artifactId>scalatest-maven-plugin</artifactId>
+                 <version>2.1.0</version>
+@@ -61,7 +60,7 @@
+                         </goals>
+                     </execution>
+                 </executions>
+-            </plugin>
++            </plugin> -->
+         </plugins>
+     </build>
+ 
+Index: ../submodule01/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd\">\n    <parent>\n        <artifactId>my-project</artifactId>\n        <groupId>org.my.comp</groupId>\n        <version>1.0</version>\n    </parent>\n    <modelVersion>4.0.0</modelVersion>\n\n\n    <artifactId>submodule01</artifactId>\n<!--    <inceptionYear>2008</inceptionYear>-->\n    <properties>\n        <scala.version>2.7.0</scala.version>\n    </properties>\n\n<!--    <repositories>-->\n<!--        <repository>-->\n<!--            <id>scala-tools.org</id>-->\n<!--            <name>Scala-Tools Maven2 Repository</name>-->\n<!--            <url>https://scala-tools.org/repo-releases</url>-->\n<!--        </repository>-->\n<!--    </repositories>-->\n\n<!--    <pluginRepositories>-->\n<!--        <pluginRepository>-->\n<!--            <id>scala-tools.org</id>-->\n<!--            <name>Scala-Tools Maven2 Repository</name>-->\n<!--            <url>https://scala-tools.org/repo-releases</url>-->\n<!--        </pluginRepository>-->\n<!--    </pluginRepositories>-->\n\n<!--    <dependencies>-->\n<!--        <dependency>-->\n<!--            <groupId>org.scala-lang</groupId>-->\n<!--            <artifactId>scala-library</artifactId>-->\n<!--            <version>${scala.version}</version>-->\n<!--        </dependency>-->\n<!--        <dependency>-->\n<!--            <groupId>junit</groupId>-->\n<!--            <artifactId>junit</artifactId>-->\n<!--            <version>4.4</version>-->\n<!--            <scope>test</scope>-->\n<!--        </dependency>-->\n<!--        <dependency>-->\n<!--            <groupId>org.specs</groupId>-->\n<!--            <artifactId>specs</artifactId>-->\n<!--            <version>1.2.5</version>-->\n<!--            <scope>test</scope>-->\n<!--        </dependency>-->\n<!--    </dependencies>-->\n\n<!--    <build>-->\n<!--        <sourceDirectory>src/main/scala</sourceDirectory>-->\n<!--        <testSourceDirectory>src/test/scala</testSourceDirectory>-->\n<!--        <plugins>-->\n<!--            <plugin>-->\n<!--                <groupId>org.scala-tools</groupId>-->\n<!--                <artifactId>maven-scala-plugin</artifactId>-->\n<!--                <executions>-->\n<!--                    <execution>-->\n<!--                        <goals>-->\n<!--                            <goal>compile</goal>-->\n<!--                            <goal>testCompile</goal>-->\n<!--                        </goals>-->\n<!--                    </execution>-->\n<!--                </executions>-->\n<!--                <configuration>-->\n<!--                    <scalaVersion>${scala.version}</scalaVersion>-->\n<!--                    <args>-->\n<!--                        <arg>-target:jvm-1.5</arg>-->\n<!--                    </args>-->\n<!--                </configuration>-->\n<!--            </plugin>-->\n<!--            <plugin>-->\n<!--                <groupId>org.apache.maven.plugins</groupId>-->\n<!--                <artifactId>maven-eclipse-plugin</artifactId>-->\n<!--                <configuration>-->\n<!--                    <downloadSources>true</downloadSources>-->\n<!--                    <buildcommands>-->\n<!--                        <buildcommand>ch.epfl.lamp.sdt.core.scalabuilder</buildcommand>-->\n<!--                    </buildcommands>-->\n<!--                    <additionalProjectnatures>-->\n<!--                        <projectnature>ch.epfl.lamp.sdt.core.scalanature</projectnature>-->\n<!--                    </additionalProjectnatures>-->\n<!--                    <classpathContainers>-->\n<!--                        <classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>-->\n<!--                        <classpathContainer>ch.epfl.lamp.sdt.launching.SCALA_CONTAINER</classpathContainer>-->\n<!--                    </classpathContainers>-->\n<!--                </configuration>-->\n<!--            </plugin>-->\n<!--        </plugins>-->\n<!--    </build>-->\n<!--    <reporting>-->\n<!--        <plugins>-->\n<!--            <plugin>-->\n<!--                <groupId>org.scala-tools</groupId>-->\n<!--                <artifactId>maven-scala-plugin</artifactId>-->\n<!--                <configuration>-->\n<!--                    <scalaVersion>${scala.version}</scalaVersion>-->\n<!--                </configuration>-->\n<!--            </plugin>-->\n<!--        </plugins>-->\n<!--    </reporting>-->\n</project>\n
+===================================================================
+diff --git a/../submodule01/pom.xml b/../submodule01/pom.xml
+--- a/../submodule01/pom.xml	
++++ b/../submodule01/pom.xml	
+@@ -14,28 +14,28 @@
+         <scala.version>2.7.0</scala.version>
+     </properties>
+ 
+-<!--    <repositories>-->
+-<!--        <repository>-->
+-<!--            <id>scala-tools.org</id>-->
+-<!--            <name>Scala-Tools Maven2 Repository</name>-->
+-<!--            <url>https://scala-tools.org/repo-releases</url>-->
+-<!--        </repository>-->
+-<!--    </repositories>-->
++   <repositories>
++       <repository>
++           <id>scala-tools.org</id>
++           <name>Scala-Tools Maven2 Repository</name>
++           <url>https://scala-tools.org/repo-releases</url>
++       </repository>
++   </repositories>
+ 
+-<!--    <pluginRepositories>-->
+-<!--        <pluginRepository>-->
+-<!--            <id>scala-tools.org</id>-->
+-<!--            <name>Scala-Tools Maven2 Repository</name>-->
+-<!--            <url>https://scala-tools.org/repo-releases</url>-->
+-<!--        </pluginRepository>-->
+-<!--    </pluginRepositories>-->
++   <pluginRepositories>
++       <pluginRepository>
++           <id>scala-tools.org</id>
++           <name>Scala-Tools Maven2 Repository</name>
++           <url>https://scala-tools.org/repo-releases</url>
++       </pluginRepository>
++   </pluginRepositories>
+ 
+-<!--    <dependencies>-->
+-<!--        <dependency>-->
+-<!--            <groupId>org.scala-lang</groupId>-->
+-<!--            <artifactId>scala-library</artifactId>-->
+-<!--            <version>${scala.version}</version>-->
+-<!--        </dependency>-->
++   <dependencies>
++       <dependency>
++           <groupId>org.scala-lang</groupId>
++           <artifactId>scala-library</artifactId>
++           <version>${scala.version}</version>
++        </dependency>
+ <!--        <dependency>-->
+ <!--            <groupId>junit</groupId>-->
+ <!--            <artifactId>junit</artifactId>-->
+@@ -48,32 +48,32 @@
+ <!--            <version>1.2.5</version>-->
+ <!--            <scope>test</scope>-->
+ <!--        </dependency>-->
+-<!--    </dependencies>-->
++   </dependencies>
+ 
+-<!--    <build>-->
+-<!--        <sourceDirectory>src/main/scala</sourceDirectory>-->
+-<!--        <testSourceDirectory>src/test/scala</testSourceDirectory>-->
+-<!--        <plugins>-->
+-<!--            <plugin>-->
+-<!--                <groupId>org.scala-tools</groupId>-->
+-<!--                <artifactId>maven-scala-plugin</artifactId>-->
+-<!--                <executions>-->
+-<!--                    <execution>-->
+-<!--                        <goals>-->
+-<!--                            <goal>compile</goal>-->
+-<!--                            <goal>testCompile</goal>-->
+-<!--                        </goals>-->
+-<!--                    </execution>-->
+-<!--                </executions>-->
+-<!--                <configuration>-->
+-<!--                    <scalaVersion>${scala.version}</scalaVersion>-->
+-<!--                    <args>-->
+-<!--                        <arg>-target:jvm-1.5</arg>-->
+-<!--                    </args>-->
+-<!--                </configuration>-->
+-<!--            </plugin>-->
+-<!--            <plugin>-->
+-<!--                <groupId>org.apache.maven.plugins</groupId>-->
++   <build>
++       <sourceDirectory>src/main/scala</sourceDirectory>
++       <testSourceDirectory>src/test/scala</testSourceDirectory>
++       <plugins>
++           <plugin>
++               <groupId>org.scala-tools</groupId>
++               <artifactId>maven-scala-plugin</artifactId>
++               <executions>
++                   <execution>
++                       <goals>
++                           <goal>compile</goal>
++                           <goal>testCompile</goal>
++                       </goals>
++                   </execution>
++               </executions>
++               <configuration>
++                   <scalaVersion>${scala.version}</scalaVersion>
++                   <args>
++                       <arg>-target:jvm-1.5</arg>
++                   </args>
++               </configuration>
++           </plugin>
++           <plugin>
++               <!-- <groupId>org.apache.maven.plugins</groupId> -->
+ <!--                <artifactId>maven-eclipse-plugin</artifactId>-->
+ <!--                <configuration>-->
+ <!--                    <downloadSources>true</downloadSources>-->
+@@ -89,8 +89,8 @@
+ <!--                    </classpathContainers>-->
+ <!--                </configuration>-->
+ <!--            </plugin>-->
+-<!--        </plugins>-->
+-<!--    </build>-->
++       </plugins>
++   </build>
+ <!--    <reporting>-->
+ <!--        <plugins>-->
+ <!--            <plugin>-->
+Index: ../submodule01/src/main/scala/org/my/comp/myApp.scala
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.my.comp\n\n/**\n * Hello world!\n *\n */\nobject myApp extends App {\n  println( \"Hello World!\" )\n}\n
+===================================================================
+diff --git a/../submodule01/src/main/scala/org/my/comp/myApp.scala b/../submodule01/src/main/scala/org/my/comp/myApp.scala
+--- a/../submodule01/src/main/scala/org/my/comp/myApp.scala	
++++ b/../submodule01/src/main/scala/org/my/comp/myApp.scala	
+@@ -7,3 +7,4 @@
+ object myApp extends App {
+   println( "Hello World!" )
+ }
++
