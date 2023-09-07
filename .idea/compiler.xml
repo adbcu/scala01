@@ -7,12 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="stepik01" />
+        <module name="scala01" />
         <module name="scala_for_impatient" />
         <module name="maven01" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="scala01" target="1.5" />
-    </bytecodeTargetLevel>
   </component>
 </project>
