@@ -1,4 +1,4 @@
-package stepik01.week3_oop
+package main.scala.week3_oop
 
 object CaseClasses {
   def main(args: Array[String]): Unit = {
@@ -10,7 +10,7 @@ object CaseClasses {
   val bob = new Person(name = "Bob", age = 12)
   println(bob.toString)
 
-  val steve = bob.copy(name = "Steve", age = bob.age + 1)
+  private val steve = bob.copy(name = "Steve", age = bob.age + 1)
   println(steve.toString)
 
   println(bob.hashCode())
@@ -23,8 +23,8 @@ object CaseClasses {
     println("object A")
   }
 
-  val aVal = A
-  val anotherVal = A
+  private val aVal = A
+  private val anotherVal = A
 
   println(aVal.a)
   println(anotherVal.a)
